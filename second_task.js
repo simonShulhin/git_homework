@@ -40,6 +40,7 @@ function grid(n) {
       charCount = 65;
     }
   }
+  // ти маєш повернути масив масивів, а не стрінгу grid(3) --> [[a,b,c], [b,c,d], [c,d,e]]
   return string;
 }
 
