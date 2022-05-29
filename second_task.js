@@ -24,24 +24,29 @@
 // After "z" comes "a" If function receive N < 0 should return: null
 
 function grid(n) {
-  let charCount = 65;
-  let rowCount = 0;
-  let string = "";
-  for (let i = 0; i < n * n; i++) {
-    const char = String.fromCharCode(charCount);
-    string += char;
-    rowCount++;
-    charCount++;
-    if (rowCount >= n) {
-      string += "\n";
-      rowCount = 0;
+  let outerCharCounter = 65;
+  let innerCharCounter = 65;
+  const result = [];
+
+  for (let i = 0; i < n; i++) {
+    result[i] = [];
+    innerCharCounter = outerCharCounter;
+    for (let j = 0; j < n; j++) {
+      if (innerCharCounter > 90) {
+        innerCharCounter = 65;
+      }
+      const char = String.fromCharCode(innerCharCounter);
+      innerCharCounter++;
+      result[i].push(char);
     }
-    if (charCount > 90) {
-      charCount = 65;
+    outerCharCounter++;
+    if (outerCharCounter > 90) {
+      outerCharCounter = 65;
     }
   }
+  return result;
+
   // ти маєш повернути масив масивів, а не стрінгу grid(3) --> [[a,b,c], [b,c,d], [c,d,e]]
-  return string;
 }
 
-console.log(grid(122));
+console.log(grid(30));
